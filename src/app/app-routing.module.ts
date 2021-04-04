@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthRoutingModule } from './auth/auth.routing';
+import { PagesRoutingModule } from './pages/pages.routing';
 
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { Page404Component } from './pages/page404/page404.component';
-import { PagesroutingModule } from './pages/pages.routing';
 
 const routes: Routes = [
 
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  // path: /dashboard - En pages.routing.ts
+  // path: /auth - En auth.routing.ts
+
   { path: '**', component: Page404Component },
 ];
 
@@ -18,7 +18,8 @@ const routes: Routes = [
   declarations: [],
   imports: [
     RouterModule.forRoot(routes),
-    PagesroutingModule
+    PagesRoutingModule,
+    AuthRoutingModule
   ],
   exports: [
     RouterModule

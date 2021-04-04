@@ -9,7 +9,7 @@ const routes: Routes = [
 
   // path: /dashboard - En pages.routing.ts
   // path: /auth - En auth.routing.ts
-
+  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
   { path: '**', component: Page404Component },
 ];
 

@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ComponentModule } from '../components/component.module';
+import { ChartsModule } from 'ng2-charts';
 
 // Components
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Page404Component } from './page404/page404.component';
 import { Grafica1Component } from './grafica1/grafica1.component';
 import { ProgressComponent } from './progress/progress.component';
-import { ComponentModule } from '../components/component.module';
 
 
 
@@ -27,7 +28,8 @@ import { ComponentModule } from '../components/component.module';
   imports: [
     CommonModule,
     FormsModule,
-    ComponentModule
+    ComponentModule,
+    ChartsModule,
   ]
 })
 export class PagesModule { }

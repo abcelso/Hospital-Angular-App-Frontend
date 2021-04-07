@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { ChartType  } from 'chart.js';
-import { MultiDataSet, Label, Color  } from 'ng2-charts';
+
 
 @Component({
   selector: 'app-grafica1',
@@ -10,16 +9,18 @@ import { MultiDataSet, Label, Color  } from 'ng2-charts';
 })
 export class Grafica1Component {
 
-  // Doughnut
-  public doughnutChartLabels: Label[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-  public doughnutChartData: MultiDataSet = [
-    [350, 450, 100],
-    // [50, 150, 120],
-    // [250, 130, 70],
-  ];
+  dona1 = {
+    chartLabels: ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'],
+    chartData: [ [50, 150, 120]],
+    colors: [{ backgroundColor: ['red', 'blue', 'lightgreen']}],
+    titulo: 'Ventas'
+  };
+  dona2 = {
+    chartLabels: ['Xiaomi', 'Samsung', 'Iphone'],
+    chartData: [ [250, 130, 70]],
+    colors: [{ backgroundColor: ['yellow', 'gray', 'purple']}],
+    titulo: 'Celulares'
+  };
 
-  public colors: Color[] = [
-     { backgroundColor: ['red', 'cyan', 'lightgreen']}
-    ];
 
 }

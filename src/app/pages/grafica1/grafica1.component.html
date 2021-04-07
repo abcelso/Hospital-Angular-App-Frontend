@@ -2,14 +2,26 @@
     <div class="col-6">
         <div class="card">
             <div class="card-body">
-                <div style="display: block">
-                    <canvas baseChart
-                      [data]="doughnutChartData"
-                      [labels]="doughnutChartLabels"
-                      [colors]="colors"
-                      chartType="doughnut">
-                    </canvas>
-                  </div>
+                <app-dona
+                    [titulo]="dona1.titulo"
+                    [doughnutChartLabels]="dona1.chartLabels"
+                    [doughnutChartData]="dona1.chartData"
+                    [colors]="dona1.colors"
+                    >
+                </app-dona>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <app-dona
+                    [titulo]="dona2.titulo"
+                    [doughnutChartLabels]="dona2.chartLabels"
+                    [doughnutChartData]="dona2.chartData"
+                    [colors]="dona2.colors"
+                    >
+                </app-dona>
             </div>
         </div>
     </div>

@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IncrementalComponent } from './incremental/incremental.component';
 import { FormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
+
+import { IncrementalComponent } from './incremental/incremental.component';
+import { DonaComponent } from './dona/dona.component';
 
 
 
 @NgModule({
-  declarations: [IncrementalComponent],
-  exports: [IncrementalComponent],
+  declarations: [IncrementalComponent, DonaComponent],
+  exports: [IncrementalComponent, DonaComponent],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
 })
 

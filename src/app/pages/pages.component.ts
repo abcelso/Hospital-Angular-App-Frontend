@@ -18,7 +18,7 @@ export class PagesComponent implements OnInit {
     this.linkTheme.setAttribute('href', url);
 
     const pos = Number(localStorage.getItem('position'));
-    this.tilde[(pos - 1)].classList.add('working');
+    return this.tilde[(pos - 1)].classList.add('working');
   }
 
 }

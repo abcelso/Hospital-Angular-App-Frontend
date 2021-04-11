@@ -8,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagesComponent implements OnInit {
 
+  linkTheme = document.querySelector('#theme');
+  tilde = document.getElementsByClassName('selector');
+
   constructor() { }
 
   ngOnInit(): void {
+    const url: string = localStorage.getItem('theme');
+    this.linkTheme.setAttribute('href', url);
+
+    const pos = Number(localStorage.getItem('position'));
+    this.tilde[(pos - 1)].classList.add('working');
   }
 
 }

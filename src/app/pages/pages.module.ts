@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { Page404Component } from './page404/page404.component';
 import { Grafica1Component } from './grafica1/grafica1.component';
 import { ProgressComponent } from './progress/progress.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 
@@ -17,12 +18,14 @@ import { ProgressComponent } from './progress/progress.component';
     Page404Component,
     Grafica1Component,
     ProgressComponent,
+    AccountSettingsComponent,
   ],
   exports: [
     DashboardComponent,
     Page404Component,
     Grafica1Component,
     ProgressComponent,
+    AccountSettingsComponent
   ],
   imports: [
     CommonModule,

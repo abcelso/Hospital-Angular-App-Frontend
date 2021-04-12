@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+// tslint:disable-next-line:typedef
+declare function scriptInit();
+
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
@@ -8,17 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagesComponent implements OnInit {
 
-  linkTheme = document.querySelector('#theme');
-  tilde = document.getElementsByClassName('selector');
+
 
   constructor() { }
 
   ngOnInit(): void {
-    const url: string = localStorage.getItem('theme');
-    this.linkTheme.setAttribute('href', url);
-
-    const pos = Number(localStorage.getItem('position'));
-    return this.tilde[(pos - 1)].classList.add('working');
+    scriptInit();
   }
 
 }

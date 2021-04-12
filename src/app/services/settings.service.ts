@@ -22,8 +22,9 @@ export class SettingsService {
     // Tilde en class selector
     for (const i in this.tilde){
       if ((this.tilde[i].getAttribute('data-theme')) === theme ){
-        const pos = this.tilde[i].innerHTML;
-        localStorage.setItem('position', pos);
+        const pos = Number(this.tilde[i].innerHTML) - 1;
+        console.log(pos);
+        localStorage.setItem('position', String(pos));
         return this.tilde[i].classList.add('working') ;
       }
     }

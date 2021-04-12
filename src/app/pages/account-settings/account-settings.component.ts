@@ -9,10 +9,17 @@ import { SettingsService } from 'src/app/services/settings.service';
 })
 export class AccountSettingsComponent implements OnInit {
 
+  linkTheme = document.querySelector('#theme');
+  tilde = document.getElementsByClassName('selector');
 
   constructor(private settingsService: SettingsService) { }
 
   ngOnInit(): void {
+    const url: string = localStorage.getItem('theme');
+    this.linkTheme.setAttribute('href', url);
+
+    const pos = Number(localStorage.getItem('position'));
+    this.tilde[(pos)].classList.add('working');
   }
 
   cambiarTheme(theme: string): void {

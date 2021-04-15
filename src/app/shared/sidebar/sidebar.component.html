@@ -34,15 +34,17 @@
               ><span class="hide-menu"
               > Dashboard
               <span class="label label-rouded label-themecolor pull-right"
-              >3</span
+              >4</span
               ></span
               ></a
               >
               <ul
               class="collapse">
-              <li><a routerLink="/">Principal</a></li>
-              <li><a routerLink="progress">ProgresBar</a></li>
-              <li><a routerLink="grafica1">Graficas</a></li>
+              <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Principal</a></li>
+              <li><a routerLink="progress" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >ProgresBar</a></li>
+              <li><a routerLink="grafica1" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Graficas</a></li>
+              <li><a routerLink="promesas" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Promesas</a></li>
+              <li><a routerLink="rxjs" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Rxjs</a></li>
             </ul>
           </li>
         </div>

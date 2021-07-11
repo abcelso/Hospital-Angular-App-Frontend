@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   formSubmitted = false;
   registerForm = this.fb.group({
-    name: ['Alejandro', [Validators.required, Validators.minLength(3)]],
+    nombre: ['Alejandro', [Validators.required, Validators.minLength(3)]],
     email: ['alejandro@gmail.com', [Validators.required, Validators.email]],
     password: ['123456', Validators.required],
     password2: ['123456', Validators.required],
@@ -23,22 +25,33 @@ export class RegisterComponent implements OnInit {
     }
   );
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
   createUser(): void {
+
     this.formSubmitted = true;
-    if (this.registerForm.valid && !this.aceptarTerminos()){
-      console.log('Registro posteado');
-    }else{
-      console.log('Formulario no es correcto...');
+
+    if (this.registerForm.invalid && this.aceptarTerminos()){
+      return;
     }
-    console.log(this.registerForm);
+
+    this.userService.createUser(this.registerForm.value)
+      .subscribe( resp => {
+        console.log(resp);
+        console.log('Formulario posteado...');
+      }, (err) => {
+        Swal.fire('Error', err.error.msg, 'error');
+      });
+
+
   }
 
   campoNoValido(campo: string): boolean {
+
     if (this.registerForm.get(campo).invalid && this.formSubmitted){
       return true;
     }else{

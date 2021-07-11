@@ -10,20 +10,27 @@
   >
     <div class="login-box card">
       <div class="card-body">
+
         <form
           class="form-horizontal form-material"
           id="loginform"
-          action="index.html"
-        >
+          autocomplete="off"
+          [formGroup]="registerForm"
+          (ngsubmit)="createUser()"
+          a
+          >
           <h3 class="box-title m-b-20">Sign Up</h3>
           <div class="form-group">
             <div class="col-xs-12">
               <input
                 class="form-control"
                 type="text"
-                required=""
                 placeholder="Name"
+                formControlName="name"
               />
+            </div>
+            <div *ngIf="campoNoValido('name')">
+              <p class="text-danger font-italic">El nombre es obligatorio</p>
             </div>
           </div>
           <div class="form-group">
@@ -31,9 +38,12 @@
               <input
                 class="form-control"
                 type="text"
-                required=""
                 placeholder="Email"
+                formControlName="email"
               />
+            </div>
+            <div *ngIf="campoNoValido('email')">
+              <p class="text-danger font-italic">El email es obligatorio</p>
             </div>
           </div>
           <div class="form-group">
@@ -41,8 +51,8 @@
               <input
                 class="form-control"
                 type="password"
-                required=""
                 placeholder="Password"
+                formControlName="password"
               />
             </div>
           </div>
@@ -51,9 +61,12 @@
               <input
                 class="form-control"
                 type="password"
-                required=""
                 placeholder="Confirm Password"
+                formControlName="password2"
               />
+            </div>
+            <div *ngIf="PassNotValid()">
+              <p class="text-danger font-italic">Los passwords no son iguales</p>
             </div>
           </div>
           <div class="form-group row">
@@ -63,10 +76,14 @@
                   id="checkbox-signup"
                   type="checkbox"
                   class="filled-in chk-col-light-blue"
+                  formControlName="terms"
                 />
                 <label for="checkbox-signup">
                   I agree to all <a href="javascript:void(0)">Terms</a></label
                 >
+              </div>
+              <div *ngIf="aceptarTerminos()">
+                <p class="text-danger font-italic">Acepte los términos</p>
               </div>
             </div>
           </div>
@@ -75,6 +92,7 @@
               <button
                 class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light"
                 type="submit"
+                (click)="createUser()"
               >
                 Sign Up
               </button>

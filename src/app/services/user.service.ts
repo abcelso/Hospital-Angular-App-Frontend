@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { UserData } from '../interfaces/user.interface';
+import { LoginData } from '../interfaces/user-login.interface';
+import { RegisterData } from '../interfaces/user-register.interface';
 
 const baseUrl = environment.base_URL;
 
@@ -13,7 +14,11 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  createUser(formData: UserData): Observable<UserData> {
-    return this.http.post<UserData>(`${baseUrl}/usuarios`, formData );
+  createUser(formData: RegisterData): Observable<RegisterData> {
+    return this.http.post<RegisterData>(`${baseUrl}/usuarios`, formData );
+  }
+
+  loginUser(formData: LoginData): Observable<LoginData> {
+      return this.http.post<LoginData>(`${baseUrl}/login`, formData);
   }
 }

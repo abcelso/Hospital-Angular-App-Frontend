@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class RegisterComponent implements OnInit {
 
   formSubmitted = false;
+
   registerForm = this.fb.group({
     nombre: ['Alejandro', [Validators.required, Validators.minLength(3)]],
     email: ['alejandro@gmail.com', [Validators.required, Validators.email]],

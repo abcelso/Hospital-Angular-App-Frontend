@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 
 import { LoginData } from '../interfaces/user-login.interface';
 import { RegisterData } from '../interfaces/user-register.interface';
+import { Usuario } from '../models/usuarios.model';
 
 const baseUrl = environment.base_URL;
 declare const gapi: any;
@@ -17,6 +18,7 @@ declare const gapi: any;
 export class UserService {
 
   auth2: any;
+  user: Usuario;
 
   constructor(private http: HttpClient,
               private router: Router,
@@ -47,8 +49,21 @@ export class UserService {
       headers: {'x-token': token}
     })
       .pipe(
-        tap( (resp: any) => localStorage.setItem('token', resp.token)),
-        map( resp => true),
+        map( (resp: any) => {
+          const {nombre, email, password, role, google, img = '' } = resp.user;
+
+          localStorage.setItem('token', resp.token);
+
+          this.user = new Usuario(
+            nombre,
+            email,
+            password,
+            role,
+            google,
+            img
+          );
+          return true;
+        }),
         catchError( error => of(false))
       );
   }

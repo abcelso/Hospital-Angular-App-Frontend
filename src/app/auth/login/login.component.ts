@@ -63,6 +63,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  // ?Renderiza el botón de google
   renderButton(): void {
     gapi.signin2.render('my-signin2', {
       scope: 'profile email',

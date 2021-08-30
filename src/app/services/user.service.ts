@@ -28,8 +28,16 @@ export class UserService {
 
               }
 
-  async googleInit(): Promise<void> {
+  get uid(): string {
+    return this.user.uid;
+  }
 
+  get xToken(): any {
+    const token = localStorage.getItem('token') || '';
+    return {headers: {'x-token': token}};
+  }
+
+  async googleInit(): Promise<void> {
     return new Promise(resolve => {
       gapi.load('auth2', () => {
         this.auth2 = gapi.auth2.init({
@@ -43,14 +51,10 @@ export class UserService {
   }
 
   validarToken(): Observable<boolean> {
-    const token = localStorage.getItem('token') || '';
-
-    return this.http.get(`${baseUrl}/login/renew`, {
-      headers: {'x-token': token}
-    })
+    return this.http.get(`${baseUrl}/login/renew`, this.xToken)
       .pipe(
         map( (resp: any) => {
-          const {nombre, email, password, role, google, img = '' } = resp.user;
+          const {nombre, email, password, role, google, uid, img = '' } = resp.user;
 
           localStorage.setItem('token', resp.token);
 
@@ -60,6 +64,7 @@ export class UserService {
             password,
             role,
             google,
+            uid,
             img
           );
           return true;
@@ -70,6 +75,15 @@ export class UserService {
 
   createUser(formData: RegisterData): Observable<RegisterData> {
     return this.http.post<RegisterData>(`${baseUrl}/usuarios`, formData );
+  }
+
+  updateUser( data: {name: string, email: string, role: string}): Observable<ArrayBuffer> {
+    data = {
+      ...data,
+      role: this.user.role
+    };
+
+    return this.http.put(`${baseUrl}/usuarios/${this.uid}`, data, this.xToken );
   }
 
   loginUser(formData: LoginData): Observable<boolean> {

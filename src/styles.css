@@ -10,3 +10,8 @@
 .cursor {
     cursor:pointer;
 }
+
+.image-size {
+    max-width: 130px;
+    max-height: 130px;
+}

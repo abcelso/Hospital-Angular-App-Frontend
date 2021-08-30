@@ -11,6 +11,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: 'dashboard',
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'account-settings', component: AccountSettingsComponent, data: { pageName: 'Temas' } },
       { path: 'promesas', component: PromesasComponent, data: { pageName: 'Promesas' } },
       { path: 'rxjs', component: RxjsComponent, data: { pageName: 'Rxjs' } },
+      { path: 'profile', component: ProfileComponent, data: { pageName: 'Profile' }},
     ]
   },
 ];

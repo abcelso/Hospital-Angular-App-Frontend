@@ -40,11 +40,32 @@
               >
               <ul
               class="collapse">
-              <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Principal</a></li>
+              <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{menuItems[0].submenu[0].title}}</a></li>
               <li><a routerLink="progress" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >ProgresBar</a></li>
               <li><a routerLink="grafica1" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Graficas</a></li>
               <li><a routerLink="promesas" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Promesas</a></li>
               <li><a routerLink="rxjs" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Rxjs</a></li>
+            </ul>
+          </li>
+        </div>
+        <div>
+          <li>
+            <a
+            class="has-arrow waves-effect waves-dark"
+            href="#"
+            ><i class="mdi mdi-folder-lock-open"></i
+              ><span class="hide-menu"
+              > Mantenimiento
+              <span class="label label-rouded label-themecolor pull-right"
+              >4</span
+              ></span
+              ></a
+              >
+              <ul
+              class="collapse">
+              <li><a routerLink="usuarios" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Usuarios</a></li>
+              <li><a routerLink="medicos" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >Médicos</a></li>
+              <li><a routerLink="hospitales" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Hospitales</a></li>
             </ul>
           </li>
         </div>

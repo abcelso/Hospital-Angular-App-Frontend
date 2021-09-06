@@ -15,3 +15,10 @@
     max-width: 130px;
     max-height: 130px;
 }
+.image-user {
+   max-width: 80px;
+   max-height: 80px;
+   border-radius: 100%;
+   border: 1px solid gray
+}
+

@@ -1,12 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+
 import { environment } from 'src/environments/environment';
+
+import { GetUsers } from '../interfaces/user-get.interface';
 
 import { LoginData } from '../interfaces/user-login.interface';
 import { RegisterData } from '../interfaces/user-register.interface';
+
 import { Usuario } from '../models/usuarios.model';
 
 const baseUrl = environment.base_URL;
@@ -112,5 +117,25 @@ export class UserService {
       });
     });
 
+  }
+
+  loadUsers(desde: number): Observable<any> {
+
+    const url = `${baseUrl}/usuarios?desde=${ desde }`;
+
+    return this.http.get<GetUsers>(url, this.xToken)
+              .pipe(
+                map( (resp: any) => {
+                  const usuarios = resp.user.map(
+                     user => new Usuario(user.nombre, user.email, '', user.role, user.google, user.uid, user.img) );
+                  // console.log(usuarios[0].imageUrl);
+                  return {
+                    cuenta: resp.cuenta,
+                    user: usuarios
+                  };
+                  // const newUser = resp.user.map( user => {
+                  //   console.log(user);
+                  })
+              );
   }
 }

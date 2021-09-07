@@ -91,6 +91,13 @@ export class UserService {
     return this.http.put(`${baseUrl}/usuarios/${this.uid}`, data, this.xToken );
   }
 
+  deleteUser( user: Usuario ): Observable<any> {
+
+    const url = `${baseUrl}/usuarios/${ user.uid }`;
+
+    return this.http.delete(url, this.xToken);
+  }
+
   loginUser(formData: LoginData): Observable<boolean> {
       return this.http.post<LoginData>(`${baseUrl}/login`, formData)
         .pipe(
@@ -127,7 +134,7 @@ export class UserService {
               .pipe(
                 map( (resp: any) => {
                   const usuarios = resp.user.map(
-                     user => new Usuario(user.nombre, user.email, '', user.role, user.google, user.uid, user.img) );
+                    user => new Usuario(user.nombre, user.email, '', user.role, user.google, user.uid, user.img) );
                   // console.log(usuarios[0].imageUrl);
                   return {
                     cuenta: resp.cuenta,

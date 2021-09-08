@@ -42,10 +42,10 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th class="w-25">Avatar</th>
+                                <th class="w-5">Avatar</th>
                                 <th class="w-25">Correo</th>
                                 <th class="w-25">Nombre</th>
-                                <th>Role</th>
+                                <th class="w-50">Role</th>
                                 <th>Auth</th>
                                 <th class="text-nowrap">Acciones</th>
                             </tr>
@@ -57,18 +57,23 @@
                                 </td>
                                 <td>{{ user.email }}</td>
                                 <td>{{ user.name }}</td>
-                                <td>{{ user.role }}</td>
+                                <td>
+                                    <select
+                                        class="form-control"
+                                        [(ngModel)]="user.role"
+                                        (change)="saveRole( user )">
+                                        <option value="ADMIN_ROLE">ADMIN_ROLE</option>
+                                        <option value="USER_ROLE">USER_ROLE</option>
+                                    </select>
+                                </td>
                                 <td>
                                     <span *ngIf="user.google" class="label label-danger">Google</span>
-                                    <span *ngIf="!  user.google" class="label label-info">Email</span>
+                                    <span *ngIf="!user.google" class="label label-info">Email</span>
                                 </td>
 
                                 <td
                                     *ngIf="myUser!==user.uid"
                                     class="text-nowrap text-center">
-                                    <a
-                                        disabled = "true"
-                                        href="#" data-toggle="tooltip" data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
                                     <a
                                     class="cursor"
                                     data-toggle="tooltip" data-original-title="Borrar"
@@ -80,9 +85,6 @@
                                 <td
                                     *ngIf="myUser==user.uid"
                                     class="text-nowrap text-center">
-                                    <a
-                                        disabled = "true"
-                                        href="#" data-toggle="tooltip" data-original-title="Editar"> <i class="fa fa-pencil disabled m-r-10"></i> </a>
                                     <a
                                     class="cursor"
                                     data-toggle="tooltip" data-original-title="Borrar"

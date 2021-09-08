@@ -145,4 +145,13 @@ export class UserService {
                   })
               );
   }
+
+  saveRole( user: Usuario): Observable<any> {
+    const user1 = {
+      ...user,
+      nombre: user.name
+    };
+
+    return this.http.put(`${baseUrl}/usuarios/${user.uid}`, user1, this.xToken );
+  }
 }

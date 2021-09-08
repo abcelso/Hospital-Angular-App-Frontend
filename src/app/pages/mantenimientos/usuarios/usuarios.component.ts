@@ -92,4 +92,9 @@ export class UsuariosComponent implements OnInit {
     });
   }
 
+  saveRole( user: Usuario): void {
+    this.userService.saveRole( user )
+      .subscribe( resp => console.log(user));
+  }
+
 }

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentModule } from '../components/component.module';
 
+import { PipesModule } from './../pipes/pipes.module';
+
 // Components
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Page404Component } from './page404/page404.component';
@@ -40,10 +42,11 @@ import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
     AccountSettingsComponent,
   ],
   imports: [
-    CommonModule,
+  CommonModule,
     FormsModule,
     ComponentModule,
     ReactiveFormsModule,
+    PipesModule
   ]
 })
 export class PagesModule { }

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuarios.model';
 import { UserService } from 'src/app/services/user.service';
-import { map } from 'rxjs/operators';
+import { delay, filter, map } from 'rxjs/operators';
 import { SearchService } from 'src/app/services/search.service';
 import Swal from 'sweetalert2';
+import { ModalImageService } from 'src/app/services/modal-image.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-usuarios',
@@ -11,7 +13,7 @@ import Swal from 'sweetalert2';
   styles: [
   ]
 })
-export class UsuariosComponent implements OnInit {
+export class UsuariosComponent implements OnInit, OnDestroy {
 
   users: Usuario[] = [];
   usersTemp: Usuario[] = [];
@@ -19,12 +21,25 @@ export class UsuariosComponent implements OnInit {
   desde = 0;
   loading = true;
   myUser = '';
+  imgSubscription: Subscription;
 
   constructor(private userService: UserService,
-              private searchService: SearchService) { }
+              private searchService: SearchService,
+              private modalImageService: ModalImageService) { }
+
+  ngOnDestroy(): void {
+    this.imgSubscription.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.loadUsers();
+    this.imgSubscription = this.modalImageService.imgEmit
+      .pipe(
+        delay(100)
+      )
+      .subscribe( () => {
+        this.loadUsers();
+      });
   }
 
   loadUsers(): void {
@@ -95,6 +110,11 @@ export class UsuariosComponent implements OnInit {
   saveRole( user: Usuario): void {
     this.userService.saveRole( user )
       .subscribe( resp => console.log(user));
+  }
+
+  openModal( user: Usuario ): void {
+    console.log(user);
+    this.modalImageService.openModal('usuarios', user.uid, user.img);
   }
 
 }

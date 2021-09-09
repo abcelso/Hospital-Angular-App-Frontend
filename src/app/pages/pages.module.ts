@@ -33,7 +33,7 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
     Page404Component,
     Grafica1Component,
     ProgressComponent,
-    AccountSettingsComponent
+    AccountSettingsComponent,
   ],
   imports: [
     CommonModule,

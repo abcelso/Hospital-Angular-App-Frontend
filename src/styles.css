@@ -27,7 +27,17 @@
 }
 
 .w-100 {
-    width: 150px;
+    width: 100px;
+}
+
+.w-50 {
+    width: 50px;
+    height: 160px;
+}
+
+.w-75 {
+    width: 75px;
+    height: 250px;
 }
 
 

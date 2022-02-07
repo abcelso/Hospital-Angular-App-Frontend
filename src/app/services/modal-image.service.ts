@@ -41,6 +41,7 @@ export class ModalImageService {
 
   closeModal(): void {
     this.hideModal = true;
+    this.img = null;
   }
 
 

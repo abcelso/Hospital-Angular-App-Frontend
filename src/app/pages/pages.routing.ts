@@ -15,6 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
+import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 
 const routes: Routes = [
   { path: 'dashboard',
@@ -27,8 +28,11 @@ const routes: Routes = [
       { path: 'promesas', component: PromesasComponent, data: { pageName: 'Promesas' } },
       { path: 'rxjs', component: RxjsComponent, data: { pageName: 'Rxjs' } },
       { path: 'profile', component: ProfileComponent, data: { pageName: 'Profile' }},
+
+      // Mantenimiento
       {  path: 'usuarios', component: UsuariosComponent, data: { pageName: 'Mantenimiento de Usuarios'} },
       {  path: 'medicos', component: MedicosComponent, data: { pageName: 'Mantenimiento de Médicos'} },
+      {  path: 'medico/:text', component: MedicoComponent, data: { pageName: 'Mantenimiento de Médicos'} },
       {  path: 'hospitales', component: HospitalesComponent, data: { pageName: 'Mantenimiento de Hospitales'} },
     ]
   },

@@ -4,6 +4,8 @@ import { Usuario } from 'src/app/models/usuarios.model';
 import { map, reduce } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Hospital } from '../models/hospitales.model';
+import { Medico } from '../models/medicos.model';
 
 const baseUrl = environment.base_URL;
 
@@ -28,6 +30,20 @@ export class SearchService {
     return respuesta;
   }
 
+  transformHospital( resp: any): Hospital {
+
+    // const respuesta = resp.data;
+    // const respuesta = resp.data.map(
+    //   hospital => new Hospital(hospital.id, hospital.usuario, hospital.nombre, hospital.img, ) );
+
+    return resp.data;
+  }
+
+  transformMedico( resp: any): Medico {
+
+    return resp.data;
+  }
+
   search(
       type: 'usuarios' | 'medicos' | 'hospitales',
       term: string
@@ -42,6 +58,12 @@ export class SearchService {
                   switch (type) {
                     case 'usuarios':
                       return this.transformUser( resp );
+
+                    case 'hospitales':
+                      return this.transformHospital( resp );
+
+                    case 'medicos':
+                      return this.transformMedico( resp );
 
                     default:
                       return [];

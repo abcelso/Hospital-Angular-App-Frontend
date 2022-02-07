@@ -23,7 +23,7 @@ export class HospitalService {
     return {headers: {'x-token': token}};
   }
 
-  loadHospital(): Observable<Hospital> {
+  loadHospital(): Observable<Hospital[]> {
 
     const url = `${baseUrl}/hospitales`;
 
@@ -38,14 +38,14 @@ export class HospitalService {
 
     const url = `${ baseUrl }/hospitales`;
 
-    return this.http.post(url, name, this.xToken);
+    return this.http.post(url, {nombre: name}, this.xToken);
   }
 
   updateHospital( id: string, name: string ): Observable<any> {
 
     const url = `${ baseUrl }/hospitales/${ id }`;
 
-    return this.http.put(url, name, this.xToken);
+    return this.http.put(url, {nombre: name}, this.xToken);
   }
 
   deleteHospital( id: string ): Observable<any> {

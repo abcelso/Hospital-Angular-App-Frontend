@@ -5,7 +5,8 @@
 
                 <input type="text"
                         class="form-control"
-                        placeholder="Search hospital..."/>
+                        placeholder="Search hospital..."
+                        (keyup)="searchHospital( $event.target.value )"/>
 
             </div>
         </div>
@@ -38,6 +39,7 @@
                     </div>
                     <div class="col text-right">
                         <button
+                            (click)="createHospital()"
                             class="btn btn-primary"
                             type="button">
                             <i class="fa fa-hospital-o" aria-hidden="true"></i>
@@ -56,17 +58,25 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let hospital of hospitales" >
-                                <td class="w-25 text-center cursor">
-                                    <img class="image-user" [src]="hospital.img | image: 'hospitales'" [alt]="hospitales.nombre">
+                                <td class="w-10 text-center cursor">
+                                    <img class="w-50" [src]="hospital.img | image: 'hospitales'" [alt]="hospital.nombre"
+                                    (click)="openModal(hospital)">
                                 </td>
-                                <td>
+                                <td class="w-75">
                                     <input class="form-control" type="text" name="nombre"
                                     placeholder="Nombre del hospital"
                                     [(ngModel)]="hospital.nombre">
                                 </td>
                                 <td class="text-nowrap text-center">
-                                    <a href="#" data-toggle="tooltip" data-original-title="Guardar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                                    <a href="#" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
+                                    <a
+                                        class="cursor"
+                                        data-toggle="tooltip" data-original-title="Guardar"
+                                    (click)="saveChanges(hospital)">
+                                    <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                    <a
+                                        class="cursor"
+                                        data-toggle="tooltip" data-original-title="Borrar"
+                                        (click)="deleteHospital(hospital)"> <i class="fa fa-close text-danger"></i> </a>
                                 </td>
                             </tr>
 

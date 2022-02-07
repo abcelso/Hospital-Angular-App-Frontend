@@ -1,22 +1,20 @@
 
-
-interface HospitalModel {
-    _id: string;
-    usuario: HospitalUser | null;
-    nombre: string;
-    img?: string;
-}
-
 interface HospitalUser {
-    _id: string;
+    id: string;
     nombre: string;
+    img: string;
 }
 
-export class Hospital {
-
-    constructor(
-        ok: boolean,
-        hospitales: HospitalModel[]
-    ){}
+export interface Hospital {
+    // constructor(
+    //     public id: string,
+    //     public nombre: string,
+    //     public usuario?: HospitalUser,
+    //     public img?: string,
+    // ){}
+        _id: string;
+        nombre: string;
+        usuario?: HospitalUser;
+        img?: string;
 }
 

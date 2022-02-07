@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { ComponentModule } from '../components/component.module';
 
 import { PipesModule } from './../pipes/pipes.module';
@@ -17,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
 import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
+import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 
 
 
@@ -33,6 +35,7 @@ import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
     UsuariosComponent,
     HospitalesComponent,
     MedicosComponent,
+    MedicoComponent,
   ],
   exports: [
     DashboardComponent,
@@ -46,7 +49,8 @@ import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
     FormsModule,
     ComponentModule,
     ReactiveFormsModule,
-    PipesModule
+    PipesModule,
+    RouterModule
   ]
 })
 export class PagesModule { }

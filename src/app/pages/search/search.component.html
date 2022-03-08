@@ -1,0 +1,120 @@
+<div class="row mt-5 animated fadeIn fast">
+    <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Médicos</h4>
+          </div>
+          <div
+            *ngIf="medicos.length === 0"
+            class="alert alert-info mx-1"
+            role="alert">
+            No hay médicos disponibles con ese término
+          </div>
+          <div
+                *ngIf="medicos.length > 0"
+                class="table-responsive">
+            <table class="table customize-table mb-0 v-middle">
+              <thead class="table-light">
+                <tr>
+                  <th class="border-bottom border-top">Avatar</th>
+                  <th class="border-bottom border-top">Nombre</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let medico of medicos">
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img
+                        [src]="medico.img | image: 'medicos'"
+                        class="rounded-circle"
+                        width="50"
+                      />
+                    </div>
+                  </td>
+                  <td>{{medico.nombre}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Hospitales</h4>
+          </div>
+          <div
+            *ngIf="hospitales.length === 0"
+            class="alert alert-info mx-1"
+            role="alert">
+            No hay hospitales disponibles con ese término
+          </div>
+          <div
+                *ngIf="hospitales.length > 0"
+                class="table-responsive">
+            <table class="table customize-table mb-0 v-middle">
+              <thead class="table-light">
+                <tr>
+                  <th class="border-bottom border-top">Imágen</th>
+                  <th class="border-bottom border-top">Nombre</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let hospital of hospitales">
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img
+                          [src]="hospital.img | image: 'hospitales'"
+                          class="rounded-circle"
+                          width="50"
+                        />
+                    </div>
+                  </td>
+                  <td>{{hospital.nombre}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+
+    </div>
+    <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Usuarios</h4>
+          </div>
+          <div
+            *ngIf="usuarios.length === 0"
+            class="alert alert-info mx-1"
+            role="alert">
+            No hay usuarios disponibles con ese término
+          </div>
+          <div
+                *ngIf="usuarios.length > 0"
+                class="table-responsive">
+            <table class="table customize-table mb-0 v-middle">
+              <thead class="table-light">
+                <tr>
+                  <th class="border-bottom border-top">Avatar</th>
+                  <th class="border-bottom border-top">Nombre</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let usuario of usuarios">
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img
+                          [src]="usuario.img | image: 'usuarios'"
+                          class="rounded-circle"
+                          width="50"
+                        />
+                    </div>
+                  </td>
+                  <td>{{usuario.nombre}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+    </div>
+</div>

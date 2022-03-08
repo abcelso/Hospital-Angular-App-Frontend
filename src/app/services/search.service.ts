@@ -44,6 +44,13 @@ export class SearchService {
     return resp.data;
   }
 
+  globalSearch(term: string): Observable<any> {
+
+    const url = `${baseUrl}/todo/${ term }`;
+
+    return this.http.get<any>(url, this.xToken);
+  }
+
   search(
       type: 'usuarios' | 'medicos' | 'hospitales',
       term: string

@@ -16,24 +16,26 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   { path: 'dashboard',
     component: PagesComponent, canActivate: [AuthGuard],
     children: [
       { path: '', component: DashboardComponent, data: { pageName: 'Dashboard' }},
+      { path: 'account-settings', component: AccountSettingsComponent, data: { pageName: 'Temas' } },
+      { path: 'buscar/:termino', component: SearchComponent, data: { pageName: 'Buscar médicos, hospitales o usuarios' } },
       { path: 'grafica1', component: Grafica1Component, data: { pageName: 'Grafica1' } },
       { path: 'progress', component: ProgressComponent, data: { pageName: 'Progress' } },
-      { path: 'account-settings', component: AccountSettingsComponent, data: { pageName: 'Temas' } },
       { path: 'promesas', component: PromesasComponent, data: { pageName: 'Promesas' } },
-      { path: 'rxjs', component: RxjsComponent, data: { pageName: 'Rxjs' } },
       { path: 'profile', component: ProfileComponent, data: { pageName: 'Profile' }},
+      { path: 'rxjs', component: RxjsComponent, data: { pageName: 'Rxjs' } },
 
       // Mantenimiento
-      {  path: 'usuarios', component: UsuariosComponent, data: { pageName: 'Mantenimiento de Usuarios'} },
+      {  path: 'hospitales', component: HospitalesComponent, data: { pageName: 'Mantenimiento de Hospitales'} },
       {  path: 'medicos', component: MedicosComponent, data: { pageName: 'Mantenimiento de Médicos'} },
       {  path: 'medico/:text', component: MedicoComponent, data: { pageName: 'Mantenimiento de Médicos'} },
-      {  path: 'hospitales', component: HospitalesComponent, data: { pageName: 'Mantenimiento de Hospitales'} },
+      {  path: 'usuarios', component: UsuariosComponent, data: { pageName: 'Mantenimiento de Usuarios'} },
     ]
   },
 ];
